@@ -1,0 +1,92 @@
+#digitalis_productivity .inside {
+    padding: 0;
+    margin-top: 0;
+	overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: 450px;
+}
+
+#digitalis_productivity .inside > div.frame {
+	/* padding: 10px; */
+}
+
+#digitalis_productivity h2 {
+	text-align: center;
+}
+
+#digitalis_productivity h1 {
+	text-transform: uppercase;
+    letter-spacing: 3px;
+    background: rgb(160,0,170);
+    color: #fff;
+    line-height: 1;
+    padding: 10px;
+	text-align: center;
+}
+#digitalis_productivity h1:not(:first-child) {
+	margin-top: 1px;
+}
+
+#digitalis_productivity table.digitalis-productivity {
+	
+}
+
+table.digitalis-productivity {
+	width: 100%;
+	border-collapse: collapse;
+	/* width: calc(100% + 1px); */
+}
+
+
+table.digitalis-productivity th,
+table.digitalis-productivity td {
+	text-align: left;
+	width: 50%;
+}
+table.digitalis-productivity th {
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	padding: 10px;
+	color: #333;
+	font-weight: bold;
+	border-bottom: 1px solid #ccc;
+}
+table.digitalis-productivity td {
+	padding: 4px 10px;	
+}
+
+table.digitalis-productivity tr:not(:last-child) td:not(:last-child) {
+	border-right: 1px solid #ccc;
+}
+
+table.digitalis-productivity tr:nth-child(even) {
+	
+	background-color: rgba(41, 96, 184, 0.05);
+	
+}
+
+table.digitalis-productivity tr.total td {
+	border-top: 1px solid #ccc;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-size: 1.2em;
+	background-color: #3a3a3a;
+    color: #fff;
+}
+
+table.digitalis-productivity tr.total td span {
+	font-weight: 100;
+}
+
+table.digitalis-productivity + .notes {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+    padding-top: 0;
+	background-color: #3a3a3a;
+    color: #ddd;
+	font-size: 0.8em;	
+}

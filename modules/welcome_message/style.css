@@ -1,0 +1,36 @@
+#digitalis_welcome {
+	width:100%;
+	text-align: center;
+}
+
+#digitalis_welcome .inside {
+	padding: 0;
+    margin-top: 0;
+	background: rgb(160,0,170);
+	background: linear-gradient(45deg, rgba(160,0,170,1) 0%, rgba(37,99,184,1) 100%);
+}
+
+#digitalis_welcome img {
+	width: 100%;
+	max-width: 250px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+#digitalis_welcome h2.welcome-text {
+	width: 100%;
+    color: #fff;
+    padding: 20px;
+	font-size: 20px;
+    letter-spacing: 1px;
+	box-sizing: border-box;
+	font-weight: 100;
+}
+
+#digitalis_welcome h2.welcome-text:first-child {
+	/* margin-bottom: 20px; */
+}
+
+#digitalis_welcome h2.welcome-text:last-child {
+	/* margin-top: 20px; */
+}

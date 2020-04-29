@@ -1,0 +1,99 @@
+.digitalis-warning {
+	padding: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-right: 20px;
+	background: rgb(160,0,170);
+	color: #fff;
+	font-size: 1.2em;
+	letter-spacing: 1px;
+}
+
+.digitalis-tab-menu {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.digitalis-tab-menu > a {
+	background-color: #333;
+	text-transform: uppercase;
+	color: #fff;
+	letter-spacing: 2px;
+	text-decoration: none;
+	padding: 15px 25px;
+	line-height: 40px;
+	margin-right: 1px;
+	transition: 0.1s;
+}
+
+.digitalis-tab-menu > a:hover {
+	background-color: rgb(160,0,170);
+}
+
+.digitalis-tab-menu > a:focus,
+.digitalis-tab-menu > a:active {
+	outline: none;
+	box-shadow: none;	
+	background-color: #fff;
+	color: #111;
+}
+
+.digitalis-ribbon {
+	width: 100%;
+    margin-top: 30px;
+    margin-bottom: 25px;
+}
+
+.digitalis-ribbon > a {
+	background-color: #fff;
+	text-transform: uppercase;
+	color: #444;
+	letter-spacing: 2px;
+	text-decoration: none;
+	padding: 8px 15px;
+	margin-right: 10px;
+	transition: 0.1s;
+	border-radius: 10px;
+	box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+}
+.digitalis-ribbon > a:hover {
+	background-color: rgb(160,0,170);
+	color: #fff;
+}
+.digitalis-ribbon > a:focus,
+.digitalis-ribbon > a:active {
+	outline: none;
+	box-shadow: none;	
+	background-color: #333;
+	color: #fff;
+}
+
+.digitalis-admin-fields input:not([type='checkbox']) {
+	width: 100%;
+}
+
+.digitalis-admin-divider {
+	 width:100%;
+	 border-bottom: 1px solid rgba(0,0,0,0.2);
+	 margin-top: 10px;
+	 margin-bottom: 10px;
+}
+
+.digitalis-admin-field-row {
+	width:100%;
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+
+.digitalis-admin-field-row > div {
+	display: inline-block;
+}
+
+.digitalis-admin-field-row > div:first-child {
+	min-width:300px;
+}
+
+.digitalis-admin-field-row > div:last-child {
+	width:100%;
+	max-width:600px;
+}

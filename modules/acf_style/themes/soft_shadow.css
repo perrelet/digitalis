@@ -1,0 +1,264 @@
+/*MAIN*/
+
+body .acf-postbox {
+    margin-top: 16px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.1), 0px 0px 1px rgba(0,0,0,0.5);
+	overflow: hidden;
+	background-color: #f9f9f9;
+}
+
+body .acf-postbox > h2.hndle {
+	background-color: #23282d;
+	transition: 0.15s;
+}
+	
+body .acf-postbox > h2.hndle:hover {
+	background-color: rgb(160,0,170) !important;
+}
+
+body .acf-postbox > h2.hndle > span {
+	color: #fff;
+	text-transform: uppercase;
+    font-size: 1em;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+body .acf-postbox .toggle-indicator,
+body .acf-postbox > .hndle .acf-hndle-cog {
+	color: #fff !important;
+}
+
+body .acf-postbox .acf-fields {
+	padding: 16px 8px !important;
+}
+
+body .acf-postbox .acf-field {
+    /* margin: 16px !important; */
+	margin-bottom: 16px !important;
+	margin-left: 8px !important;
+	margin-right: 8px !important;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1), 0px 0px 1px rgba(0,0,0,0.25);
+    border: 0;
+    background-color: #fff;
+    overflow: hidden;
+    border-radius: 8px;
+}
+body .acf-postbox .acf-field:last-child {
+	margin-bottom: 0px !important;
+}
+
+body .acf-postbox .acf-label label {
+	text-transform: uppercase;
+    font-size: 1.4em;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+/*WIDTHS*/
+
+body .acf-postbox div.acf-field[data-width="10"] { width: calc(10% - 16px) !important; }
+body .acf-postbox div.acf-field[data-width="20"] { width: calc(20% - 16px) !important; }
+body .acf-postbox div.acf-field[data-width="30"] { width: calc(30% - 16px) !important; }
+body .acf-postbox div.acf-field[data-width="40"] { width: calc(40% - 16px) !important; }
+body .acf-postbox div.acf-field[data-width="50"] { width: calc(50% - 16px) !important; }
+body .acf-postbox div.acf-field[data-width="60"] { width: calc(60% - 16px) !important; }
+body .acf-postbox div.acf-field[data-width="70"] { width: calc(70% - 16px) !important; }
+body .acf-postbox div.acf-field[data-width="80"] { width: calc(80% - 16px) !important; }
+body .acf-postbox div.acf-field[data-width="90"] { width: calc(90% - 16px) !important; }
+body .acf-postbox div.acf-field[data-width="100"]{ width: calc(100% - 16px)!important; }
+body .acf-postbox div.acf-field[data-width="5" ] { width: calc(5%  - 16px) !important; }
+body .acf-postbox div.acf-field[data-width="15"] { width: calc(15% - 16px) !important; }
+body .acf-postbox div.acf-field[data-width="25"] { width: calc(25% - 16px) !important; }
+body .acf-postbox div.acf-field[data-width="35"] { width: calc(35% - 16px) !important; }
+body .acf-postbox div.acf-field[data-width="45"] { width: calc(45% - 16px) !important; }
+body .acf-postbox div.acf-field[data-width="55"] { width: calc(55% - 16px) !important; }
+body .acf-postbox div.acf-field[data-width="65"] { width: calc(65% - 16px) !important; }
+body .acf-postbox div.acf-field[data-width="75"] { width: calc(75% - 16px) !important; }
+body .acf-postbox div.acf-field[data-width="85"] { width: calc(85% - 16px) !important; }
+body .acf-postbox div.acf-field[data-width="95"] { width: calc(95% - 16px) !important; }
+body .acf-postbox div.acf-field[data-width="33"] { width: calc(33% - 16px) !important; }
+body .acf-postbox div.acf-field[data-width="66"] { width: calc(66% - 16px) !important; }
+
+
+/*FIELDS*/
+
+body .acf-postbox *:focus {
+	outline:0;
+	
+}
+body .acf-postbox input:focus,
+body .acf-postbox button:focus {
+	box-shadow: none;
+}
+
+.acf-postbox div.acf-field .acf-input select,
+/* .acf-postbox div.acf-field .acf-input .select2-selection__rendered, */
+.acf-postbox div.acf-field .acf-input input[type=text],
+.acf-postbox div.acf-field .acf-input input[type=url] {
+    height: 34px;
+	border-radius: 8px;
+	padding: 4px 10px;
+	border: 1px solid #999;
+}
+
+.acf-postbox div.acf-field .acf-input input[type=url]  {
+	padding-left: 25px;
+}
+.acf-postbox div.acf-field .acf-input .acf-url i {
+	top: 8px;
+}
+.acf-postbox div.acf-field .wp-picker-container button {
+	border: 1px solid #777;
+}
+
+.acf-postbox div.acf-field .acf-input .acf-image-uploader img {
+	border: 8px solid white;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.15), 0px 0px 2px rgba(0,0,0,0.15);
+}
+
+/*(fields in fields - clones, etc)*/
+.acf-postbox div.acf-field .acf-fields {
+	border: none;
+}
+.acf-postbox div.acf-field .acf-fields .acf-field {
+	/* margin: 5px !important;
+	margin-bottom: 16px !important; */
+}
+
+.acf-postbox div.acf-field .acf-fields .acf-field .acf-label label {
+	font-size: 1.2em;
+	font-weight: 600;
+}
+
+/*TABLE*/
+
+.acf-postbox div.acf-field .acf-input table.acf-table {
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.acf-postbox div.acf-field .acf-input table.acf-table th {
+	background-color: rgb(160,0,170);
+	color: #fff;
+	text-transform: uppercase;
+    font-size: 1em;
+    font-weight: 400;
+    letter-spacing: 2px;
+	border: 0;
+    text-align: center;
+	box-shadow: 0px 0px 6px rgba(0,0,0,0.1);
+}
+
+.acf-postbox div.acf-field .acf-input table.acf-table td {
+    vertical-align: middle;
+	/* text-align: center; */
+}
+
+/* (block repeater) */
+
+.acf-postbox div.acf-field .acf-input .acf-repeater.-block tr.acf-row:nth-child(odd) .acf-fields {
+	background-color: #e4e4e4;
+	background: repeating-linear-gradient( 45deg, #f3f3f3, #f3f3f3 1px, #fff 1px, #fff 2px );
+}
+.acf-postbox div.acf-field .acf-input .acf-repeater.-block tr.acf-row:nth-child(odd) .acf-row-handle.order  {
+	/* background-color: #c7c7c7;
+	color: #fff;
+	text-shadow: none; */
+}
+.acf-postbox div.acf-field .acf-input .acf-repeater.-block tr.acf-row:not(:nth-last-child(2)) .acf-fields,
+.acf-postbox div.acf-field .acf-input .acf-repeater.-block tr.acf-row:not(:nth-last-child(2)) .acf-row-handle {
+	border-bottom: 20px solid #d8d8d8;
+}
+
+
+/* .acf-postbox div.acf-field .acf-input table.acf-table td * {
+	text-align: left; 
+}*/
+
+.acf-postbox .acf-repeater .acf-row-handle.order {
+	background-color: #f4f4f4;
+	transition: 0.15s;
+	font-size: 1.2em;
+}
+.acf-postbox div.acf-field .acf-input .acf-repeater.-block tr.acf-row:nth-child(odd) .acf-row-handle.order:hover,
+.acf-postbox .acf-repeater .acf-row-handle.order:hover {
+	background-color: #23282d;
+	color: #fff;
+	text-shadow: none;
+}
+
+.acf-postbox .acf-row td.acf-row-handle.remove > a.-minus {
+	border-color: #F55E4F;
+    color: #F55E4F;
+}
+.acf-postbox .acf-row td.acf-row-handle.remove > a.-minus:hover {
+	background-color: #F55E4F;
+	color: #fff;
+}
+
+.acf-postbox .acf-row td.acf-row-handle.remove > a.-plus {
+	border-color: #45ca11;
+    color: #45ca11;
+}
+.acf-postbox .acf-row td.acf-row-handle.remove > a.-plus:hover {
+	background-color: #45ca11;
+	color: #fff;
+}
+
+/*BUTTONS*/
+
+.acf-postbox .acf-field .acf-input a.acf-button {
+	text-transform: uppercase;
+    letter-spacing: 3px;
+    padding: 6px 32px;
+    font-size: 1em;
+    background-color: #333;
+    border: 0;
+    margin-top: 6px;
+	transition: 0.15s;
+	text-align: center;
+	border-radius: 10px;
+	color:#fff;
+	height: auto;
+}
+.acf-postbox .acf-field .acf-input a.acf-button:hover {
+	background-color: rgb(160,0,170);
+}
+
+.acf-postbox .acf-field.acf-field-image .acf-input a.acf-button {
+	padding: 0px 12px;
+	background-color: #333;
+}
+.acf-postbox .acf-field.acf-field-image .acf-input a.acf-button:hover {
+	background-color: rgb(160,0,170);
+}
+
+/*PLUGINS*/
+
+.digit-acf-name {
+	text-transform: none !important;
+	opacity: 1 !important;
+}
+
+body .acf-postbox .acf-label label .digit-acf-name {
+    letter-spacing: 1px;
+	font-size: 0.8em !important;
+    color: #ccc !important;
+}
+
+body .acf-postbox .acf-label label .digit-acf-name:hover {
+	color: #000 !important;
+}
+
+.acf-postbox div.acf-field .acf-input table.acf-table th .digit-acf-name {
+    letter-spacing: 1px;
+	display: block;
+	color: #aaa !important;
+	margin-left: 0 !important;
+}
+.acf-postbox div.acf-field .acf-input table.acf-table th .digit-acf-name:hover {
+	color: #fff !important;
+}
