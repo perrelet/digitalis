@@ -38,6 +38,8 @@ class Digitalis {
 		
 		if (is_admin()) add_action( 'init', [$this->admin, 'run'] );
 		
+		$this->load_vendors();
+		
 	}
 	
 	private function define_structs() {
@@ -58,6 +60,7 @@ class Digitalis {
 		require_once(DIGITALIS_PATH . "core/util/utility.class.php");
 		
 		require_once(DIGITALIS_PATH . "core/util/coder.class.php");		
+		require_once(DIGITALIS_PATH . "core/util/debugger.class.php");		
 		require_once(DIGITALIS_PATH . "core/util/marker.class.php");
 		require_once(DIGITALIS_PATH . "core/util/media.class.php");
 		require_once(DIGITALIS_PATH . "core/util/meta.class.php");
@@ -107,6 +110,10 @@ class Digitalis {
 		
 		require_once(DIGITALIS_PATH . "core/global/utils.class.php");	
 		
+	}
+	
+	private function load_vendors() {
+				
 	}
 	
 	private function load_modules() {

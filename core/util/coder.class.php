@@ -4,9 +4,12 @@ namespace Digitalis\Util;
 
 class Coder extends Utility {
 	
+	public static $inline_count = 0;
+	
 	public static function js ( $js, $handle = false, $params_name = false, $params_array = false ) {
-		
-		$handle = ($handle ? $handle . "-inline" : 'digitalis-inline');
+
+		self::$inline_count++;
+		if (!$handle) $handle = 'digitalis-inline-' . self::$inline_count;
 		
 		wp_register_script  	( $handle , false );
 		wp_enqueue_script   	( $handle );
@@ -41,7 +44,7 @@ class Coder extends Utility {
 		if ($js_loader->inline) {
 			
 			if ($js_loader->relative) $path = DIGITALIS_PATH . $path;
-			$handle = ($js_loader->handle ? $js_loader->handle : false);
+			$handle = ($js_loader->handle ? $js_loader->handle : $path);
 			
 			if ($js_loader->instantiate) {
 				

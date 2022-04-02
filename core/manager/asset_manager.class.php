@@ -16,13 +16,13 @@ class Asset_Manager {
 		$this->assets['js'] = [];
 	}
 	
-	public function load_css($asset_name, $asset_path, $inline = true) {
+	public function load_css($asset_name, $asset_path, $inline = true, $localize = true, $replaces = []) {
 		
 		if (!(array_key_exists($asset_name, $this->assets['css']))) {
 			
 			if ($inline) {
 				
-				Styler::inline_file($asset_path . $asset_name);
+				Styler::inline_file($asset_path . $asset_name, $localize, $replaces);
 				
 			} else {
 				//TODO: ENQUE THE STYLE

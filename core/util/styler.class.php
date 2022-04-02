@@ -48,9 +48,9 @@ class Styler extends Utility {
 		
 	}
 	
-	public static function inline_file ( $path, $localize = true) {
+	public static function inline_file ($path, $localize = true, $replaces = []) {
 		
-		self::css(self::get_file($path, "css", $localize));
+		return self::css(self::get_file($path, "css", $localize, $replaces));
 		
 	}
 	

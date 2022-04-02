@@ -12,6 +12,8 @@ class Dev_Monitor extends Module {
 	private $default_timeout = 10;
 	private $default_min_length = 5;
 	
+	private $work_day_length = 8;
+	
 	private $user_id = false;
 	private $timeout = -1;
 	private $min_length = -1;
@@ -99,13 +101,16 @@ class Dev_Monitor extends Module {
 		//print_r($user->allcaps);
 		
 		//echo (current_user_can("digitalis") ? "yes" : "no");
-		
-		$base = strtok(basename($_SERVER['REQUEST_URI']), "?");
-		
 		//error_log(date("Y-m-d h:i:sa") . " LOADED: " . "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" . "   -   ". $base);
 		
-		if (($base == "admin-ajax.php") || ($base == "wp-cron.php")) return false;
-		if (!is_user_logged_in()) return false;
+		
+		
+		//$base = strtok(basename($_SERVER['REQUEST_URI']), "?");
+		//if (($base == "admin-ajax.php") || ($base == "wp-cron.php")) return false;
+		
+		if (!is_user_logged_in()) 	return false;
+		if (wp_doing_ajax()) 		return false;
+		if (wp_doing_cron()) 		return false;
 		
 		$this->user_id = get_current_user_id();
 		
@@ -228,7 +233,7 @@ class Dev_Monitor extends Module {
 			
 			if (isset($range['begin']) && isset($range['end'])) {
 
-				$block = $this->get_block_label($range['begin'], $this->user_data["time_mode"]);
+				$block = $this->get_block_stamp($range['begin'], $this->user_data["time_mode"]);
 				$seconds = $range['end'] - $range['begin'];
 				
 				if (!$this->is_neglible($seconds)) {
@@ -246,37 +251,55 @@ class Dev_Monitor extends Module {
 		
 		if (!count($this->user_data["timesheet"])) return false;
 		
+		ksort($this->user_data["timesheet"]);
+
 		return $this->user_data;
 		
 	}
-	
-	public function get_block_label ($time, $time_mode = "day") {
-		
+
+	public function get_block_stamp ($time, $time_mode = "day") {
+
+		if ($time_mode == "week") $time = $time - date('w', $time) * 24 * 60 * 60;
+
+		return $this->date_to_stamp($time, $this->get_block_format($time_mode));
+
+	}
+
+	public function get_block_label ($timestamp, $time_mode = "day") {
+
+		$datetime = new \DateTime();
+		return $datetime->setTimestamp($timestamp)->format($this->get_block_format($time_mode));
+
+	}
+
+	public function get_block_format ($time_mode) {
+
 		switch ($time_mode) {
 
 			case "year":
-				return date("Y", $time);
-				break;
+				return "Y";
 			
 			case "month":
-				return date("F Y", $time);
-				break;
+				return "F Y";
 			
 			case "week":
-				$week_start = $time - date('w', $time) * 24 * 60 * 60;
-				return date('jS M Y', $week_start);
-				break;
+				return "jS M Y";
 				
 			case "time":
-				return date("Y-m-d H:i:s", $time);
-				break;
+				return "Y-m-d H:i:s";
 				
 			case "day":
 			default:
-				return date("jS M Y", $time);
+				return "jS M Y";
 			
-		}
-		
+		}		
+
+	}
+
+	public function date_to_stamp ($time, $date_format = "jS M Y") {
+
+		return \DateTime::createFromFormat($date_format, date($date_format, $time))->format("U");
+
 	}
 	
 	public function draw_table ($data) {
@@ -300,11 +323,13 @@ class Dev_Monitor extends Module {
 			
 			foreach ($user_data["timesheet"] as $block => $seconds) {
 				
+				$block_label = $this->get_block_label($block, $user_data["time_mode"]);
+
 				$duration = $this->seconds_to_duration($seconds);
 				
 				if ($duration) {
 					echo "<tr>";
-						echo "<td>$block</td>";
+						echo "<td>$block_label</td>";
 						echo "<td>$duration</td>";
 					echo "</tr>";	
 				}
@@ -406,12 +431,22 @@ class Dev_Monitor extends Module {
 	
 	public function seconds_to_duration ($seconds) {
 		
-		$minutes = date("i", $seconds);
-		$hours = date("H", $seconds);
+		$total_minutes = $seconds / 60;
+		$total_hours = $total_minutes / 60;
+		$total_days = $total_hours / $this->work_day_length;
+		
+		$days = floor($total_days);
+		$hours = floor($total_hours - (floor($total_days) * $this->work_day_length));
+		$minutes = floor($total_minutes - (floor($total_hours) * 60));
+		
+		//$minutes = date("i", $seconds);
+		//$hours = date("H", $seconds);
+		//$days = date("z", $seconds);
 		
 		$duration = "";
-		if (!($hours == "00")) $duration .= $hours . "h ";
-		$duration .= $minutes . "m";
+		if ($days) $duration .= $days . "d ";
+		if ($hours) $duration .= sprintf('%02d', $hours) . "h ";
+		$duration .= sprintf('%02d', $minutes) . "m";
 		
 		return $duration;
 		

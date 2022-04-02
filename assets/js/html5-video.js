@@ -8,7 +8,7 @@
 				if (cover) var ele_cover = videos[i].nextSibling;	
 				if (promise !== undefined) {
 					promise.then(function(values) {
-						if (cover) ele_cover.style.opacity = 0;
+						if (cover && ele_cover) ele_cover.style.opacity = 0;
 					}).catch(function(error) {
 						console.log(error);
 					});

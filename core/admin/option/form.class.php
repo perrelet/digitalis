@@ -63,7 +63,7 @@ class Form {
 		echo "<form method='post' action='options.php'>";
 		
 			settings_fields($this->group);
-			do_settings_sections($this->group);
+			//do_settings_sections($this->group);
 			
 			echo "<div class='digitalis-admin-fields'>";
 			foreach($this->fields as $field) {

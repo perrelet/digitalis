@@ -14,7 +14,9 @@ class Site_Admin extends Module {
 		register_activation_hook  ( DIGITALIS_ROOT_FILE, [$this, 'register_role'] );
 		register_deactivation_hook  ( DIGITALIS_ROOT_FILE, [$this, 'unregister_role'] );
 		
-		add_action( 'set_user_role', [$this, 'set_user_role'], 10, 3);
+		add_action('set_user_role', 		[$this, 'set_user_role'], 10, 3);
+		add_action('activated_plugin', 		[$this, 'sync_capabilities']);
+		add_action('deactivated_plugin', 	[$this, 'sync_capabilities']);
 		
 		if (class_exists('acf')) add_filter('acf/settings/show_admin', [$this, 'acf_admin']);	
 		
@@ -46,6 +48,23 @@ class Site_Admin extends Module {
 			
 		}
 
+	}
+	
+	public function sync_capabilities () {
+		
+		global $wp_roles;
+		if ( !isset( $wp_roles ) ) $wp_roles = new WP_Roles();
+		
+		$site_admin = get_role($this->role_name);
+		if (!$site_admin) return;
+		
+		foreach ($wp_roles->get_role('administrator')->capabilities as $capability => $value) {
+			
+			if ($capability == DIGITALIS_ADMIN_CAP) continue;
+			$site_admin->add_cap($capability, $value);
+			
+		}
+		
 	}
 	
 	public function unregister_role () {

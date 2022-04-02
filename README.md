@@ -15,3 +15,7 @@ The soft summer moonlight
 On bracken, grass, and bough;  
 And all the fairies dancing  
 As only they know how.  
+
+# Credits
+
+https://codeburst.io/throttling-and-debouncing-in-javascript-b01cad5c8edf

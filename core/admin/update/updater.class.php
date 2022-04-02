@@ -130,7 +130,9 @@ return $res;
 		return json_decode( $remote['body'] );
 	}
 	
-	public function check_for_updates ($use_transient = true) {
+	public function check_for_updates ($use_transient = true, $delete_transient = false) {
+		
+		if ($delete_transient) delete_transient($this->transient_name);
 		
 		$remote = $this->get_remote($use_transient);
 		if(!$remote ) return false;

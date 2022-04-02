@@ -58,7 +58,10 @@ class Maintenance_Mode extends Module {
 	
 	private function has_access () {
 		
-		return (is_user_logged_in() || is_admin());
+		if (wp_doing_ajax()) return true;
+		if (wp_doing_cron()) return true;
+		
+		return (current_user_can('manage_options') || is_admin());
 		
 	}
 	
@@ -94,7 +97,7 @@ class Maintenance_Mode extends Module {
 					$current_url = home_url( $wp->request );
 					$redirect_url = $this->get_option("maintenance_url");
 					
-					if (!($current_url == $redirect_url)) {
+					if (!(trailingslashit($current_url) == trailingslashit($redirect_url))) {
 						wp_redirect( $redirect_url );
 						exit;
 					}

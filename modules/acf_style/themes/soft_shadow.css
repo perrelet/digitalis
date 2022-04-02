@@ -102,6 +102,9 @@ body .acf-postbox button:focus {
 	padding: 4px 10px;
 	border: 1px solid #999;
 }
+.acf-postbox div.acf-field .acf-input select[multiple] {
+	height: auto;
+}
 
 .acf-postbox div.acf-field .acf-input input[type=url]  {
 	padding-left: 25px;

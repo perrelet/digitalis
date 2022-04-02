@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Plugin Name:       Digitalis
+ * Plugin Name:       Digitalis Web Design
  * Plugin URI:        http://www.digitaliswebdesign.com/
  * Description:       “Foxglove, Foxglove, What do you see?” The cool green woodland, The fat velvet bee; Hey, Mr Bumble, I’ve honey here for thee!
- * Version:           2.2.4
+ * Version:           2.6.5
  * Author:            Digitalis Web Design
  * Author URI:        http://www.digitaliswebdesign.com/
  * Text Domain:       digitalis
@@ -16,7 +16,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 /* DEFINES */
  
-define( 'DIGITALIS_VERSION', 			'2.2.4' );
+define( 'DIGITALIS_VERSION', 			'2.6.5' );
 
 define(	'DIGITALIS_PATH', 				plugin_dir_path( __FILE__ ) );
 define( 'DIGITALIS_URI',				plugin_dir_url( __FILE__ ) );
@@ -54,3 +54,17 @@ function _D() {
 
 $Digitalis = new Digitalis\Digitalis();
 $Digitalis->run();
+
+//
+
+function dprint ($content, $pre = true) {
+	Digitalis\Util\Debugger::printer($content, $pre);
+}
+
+function jprint ($content, $label = false) {
+	Digitalis\Util\Debugger::console($content, $label);
+}
+
+function dlog ($content, $label = false) {
+	Digitalis\Util\Debugger::logger($content, $label);
+}

@@ -46,7 +46,13 @@ class Module {
 
 	public function get_option( string $option, $default = false ) {
 		
-		return get_option(DIGITALIS_OPTION . $option, $default);
+		return get_option($this->get_option_key($option), $default);
+		
+	}
+	
+	public function get_option_key (string $option) {
+		
+		return DIGITALIS_OPTION . $option;
 		
 	}
 	
@@ -80,6 +86,12 @@ class Module {
 	public function get_handle ($unique = false) {
 		
 		return DIGITALIS_HANDLE . ($unique ? $this->name : DIGITALIS_MODULE_HANDLE);
+		
+	}
+	
+	public function get_asset_manager () {
+		
+		return $this->digitalis()->get_asset_manager();
 		
 	}
 	
