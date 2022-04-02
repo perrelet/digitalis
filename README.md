@@ -1,5 +1,7 @@
 # Digitalis
 
+Framework for Digitalis Web Design wordpress installs.
+
 ### Digitally Down to Earth
 
 “Foxglove, Foxglove,  
