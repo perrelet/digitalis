@@ -20,26 +20,28 @@ As only they know how.
 
 ## Modules
 
-- ACF: Show Names for Administrators
-- ACF: Restyle fields
-- ACF: Height option for wysiwyg fields
-- Create Site Admin Role
-- Debugging Settings
-- Development Monitor
-- Create Footer Widget Areas
-- Hide WP Menu
-- Log JavaScript Errors
-- Customise the Login Page
-- Maintenance Mode
-- Oxygen Templates as ACF locations
-- Oxygen global colors in Gutenberg
-- Oxygen organiser
-- Oxygen global variables in SCSS files.
-- Page Loader
-- Add Classes to Body on Scroll
-- Style the Scrollbars
-- Add Viewport Meta Tag
-- Welcome Message
+The following modules are available out of the box, however each needs to be activated individually at `/wp-admin/options-general.php?page=digitalis`
+
+- 🧾 ACF: Show Names for Administrators
+- 🌈 ACF: Restyle fields
+- 🗼 ACF: Height option for wysiwyg fields
+- 🔓 Create Site Admin Role
+- 🤖 Debugging Settings
+- 📈 Development Monitor
+- 👣 Create Footer Widget Areas
+- 👻 Hide WP Menu
+- 🖊️ Log JavaScript Errors
+- 🔑 Customise the Login Page
+- 🛠️ Maintenance Mode
+- 🚀 Oxygen Templates as ACF locations
+- 🎨 Oxygen global colors in Gutenberg
+- 🧰 Oxygen organiser
+- 🌍 Oxygen global variables in SCSS files.
+- ⭕ Page Loader
+- 👂 Add Classes to Body on Scroll
+- 🖌️ Style the Scrollbars
+- 🗻 Add Viewport Meta Tag
+- 🖐 Welcome Message
 
 ## Shortcodes
 
