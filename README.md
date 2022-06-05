@@ -22,27 +22,81 @@ As only they know how.
 
 The following modules are available out of the box, however each needs to be activated individually at `/wp-admin/options-general.php?page=digitalis`
 
-- 🧾 ACF: Show Names for Administrators
-- 🌈 ACF: Restyle fields
-- 🗼 ACF: Height option for wysiwyg fields
-- 🔓 Create Site Admin Role
-- 🤖 Debugging Settings
-- 📈 Development Monitor
-- 👣 Create Footer Widget Areas
-- 👻 Hide WP Menu
-- 🖊️ Log JavaScript Errors
-- 🔑 Customise the Login Page
-- 🛠️ Maintenance Mode
-- 🚀 Oxygen Templates as ACF locations
-- 🎨 Oxygen global colors in Gutenberg
-- 🧰 Oxygen organiser
-- 🌍 Oxygen global variables in SCSS files.
-- ⭕ Page Loader
-- 👂 Add Classes to Body on Scroll
-- 🖌️ Style the Scrollbars
-- 🗻 Add Viewport Meta Tag
-- 🖐 Welcome Message
+**🧾 ACF: Show Names for Administrators**
 
+*Prints field slugs next to their names for qucik reference.*
+
+**🌈 ACF: Restyle fields**
+
+*Overrides the default styling of all ACF fields for a modern experience.*
+
+**🗼 ACF: Height option for wysiwyg fields**
+
+*Adds an option to wysiwyg fields to set their height in the backend.*
+
+**🔓 Create Site Admin Role**
+
+*Adds a new role called 'Site Admin', which is identical to 'Administrator' except for limiting access to Oxygen Builder and ACF admin panels - Perfect for clients!*
+
+**🤖 Debugging Settings**
+
+*Allows errors to be displayed for admins only.*
+
+**📈 Development Monitor**
+
+*An automatic time tracking system for tracking development time on a per user basis.*
+
+**🦶 Create Footer Widget Areas**
+
+*Registers any number of widgets ready for use in the footer or sidebar.*
+
+**👻 Hide WP Menu**
+
+*Decultters the front end by hiding the wp admin bar unless its being hovered or viewed on mobile.*
+
+**🖊️ Log JavaScript Errors**
+
+*Sends front end js errors to a dedicated log file.*
+
+**🔑 Customise the Login Page**
+
+*Override the wordpress logo with a custom graphic on the login view.*
+
+**🛠️ Maintenance Mode**
+
+*Drop the site into maintenance mode for visitors.*
+
+**🚀 Oxygen Templates as ACF locations**
+
+*Select where fields appears based on the current oxygen template.*
+
+**🎨 Oxygen global colors in Gutenberg**
+
+*Get access to the glboal colors defined in oxygen builder directly in the Gutemberg editor*
+
+**🧰 Oxygen organiser**
+
+*Displays template inheritance in admin views and add notes to templates for referencing and better organisation.*
+
+**🌍 Oxygen global variables in SCSS files.**
+
+*Get access to global colors, fonts and breakpoints defined in oxygen builder directly in SCSS. (Requires [Sassy](Sassy))
+
+**🕢 Page Loader**
+
+*Display an overlay with a funky CSS loader while the dom loads.*
+
+**👂 Add Classes to Body on Scroll**
+
+*Adds `scrolled`, `scroll-down` and `scroll-up` classes to the document body as the user interacts with the page.*
+
+**🖌️ Style the Scrollbars**
+
+*Add CSS styles to the sites scrollbars*
+
+**🖐 Welcome Message**
+
+*Display a welcome message in the wp dashboard when the user logs in.*
 ## Shortcodes
 
 ### **metasvg**
