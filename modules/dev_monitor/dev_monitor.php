@@ -174,7 +174,7 @@ class Dev_Monitor extends Module {
 	}
 	
 	public function get_data ($time_mode = "day", $merge_users = false) {
-		
+
 		$users = get_users();
 		
 		$data = [];
@@ -197,7 +197,7 @@ class Dev_Monitor extends Module {
 	}
 	
 	public function get_user_data ($user, $time_mode = "day", $merge_user = false) {
-		
+
 		if (!$this->get_user_meta($user->ID, "monitor")) return false;
 			
 		if ($merge_user) {
@@ -302,8 +302,8 @@ class Dev_Monitor extends Module {
 
 	}
 	
-	public function draw_table ($data) {
-		
+	public function draw_table ($data, $unit = false) {
+
 		if (!$data) return;
 		
 		wp_enqueue_style('digitalis_productivity_widget', plugin_dir_url( __FILE__ ) . 'css/widget_style.css', [], DIGITALIS_VERSION);
@@ -318,14 +318,14 @@ class Dev_Monitor extends Module {
 			echo "<table class='digitalis-productivity'><tbody>";
 			echo "<tr>";
 				echo "<th>" . ucfirst($user_data["time_mode"]) . ":</th>";
-				echo "<th>Duration:</th>";
+				echo "<th>" . ($unit ? ucfirst($unit) : "Days:") . ":</th>";
 			echo "</tr>";
 			
 			foreach ($user_data["timesheet"] as $block => $seconds) {
 				
 				$block_label = $this->get_block_label($block, $user_data["time_mode"]);
 
-				$duration = $this->seconds_to_duration($seconds);
+				$duration = $this->seconds_to_duration($seconds, $unit);
 				
 				if ($duration) {
 					echo "<tr>";
@@ -337,7 +337,7 @@ class Dev_Monitor extends Module {
 			
 			echo "<tr class='total'>";
 				echo "<td>Total:</td>";
-				echo "<td>" . $this->seconds_to_duration($user_data["total"]) . "<span>*</span></td>";
+				echo "<td>" . $this->seconds_to_duration($user_data["total"], $unit) . "<span>*</span></td>";
 			echo "</tr>";	
 			
 			echo "</tbody></table>";
@@ -360,38 +360,47 @@ class Dev_Monitor extends Module {
 		
 		foreach ($this->display_options as $display_option) {
 			
-			$query["display_option"] = sanitize_title_with_dashes($display_option);
-			$buttons[$display_option] = "?" . http_build_query($query);
+			$buttons[$display_option] = add_query_arg("display_option",  sanitize_title_with_dashes($display_option));
 			
 		}
 		
 		$query["display_option"] = (isset($_GET["display_option"]) ? $_GET["display_option"] : "");
 		
 		if (!isset($_GET["merge_users"]) || !$_GET["merge_users"]) {
-			$query["merge_users"] = 1;
+			$value = 1;
 			$label = "Merge Users";
 		} else {
-			$query["merge_users"] = 0;
+			$value = 0;
 			$label = "Individual Users";
 		}
-		
-		$buttons[$label] = "?" . http_build_query($query);
 
-		$this->button_ribbon($buttons);
+		$buttons[$label] = add_query_arg("merge_users", $value);
+
+		if (!isset($_GET["unit"]) || ($_GET["unit"] != 'hours')) {
+			$value = 'hours';
+			$label = "Time in Hours";
+		} else {
+			$value = 'days';
+			$label = "Time in Days";
+		}
+
+		$buttons[$label] = add_query_arg("unit", $value);
 		
+		$this->button_ribbon($buttons);
 		
 		echo "<div id='digitalis_productivity'>";
 		$this->draw_table(
 			$this->get_data(
 				(isset($_GET["display_option"]) ? $_GET["display_option"] : "day"),
 				(isset($_GET["merge_users"]) ? $_GET["merge_users"] : false)
-			)
+			),
+			(isset($_GET["unit"]) ? $_GET["unit"] : false)
 		);
 		echo "</div>";
 		
 	}
 	
-	public function button_ribbon (Array $buttons) {
+	public function button_ribbon ($buttons) {
 		
 		echo "<div class='digitalis-ribbon'>";
 		
@@ -429,26 +438,39 @@ class Dev_Monitor extends Module {
 		
 	}
 	
-	public function seconds_to_duration ($seconds) {
+	public function seconds_to_duration ($seconds, $mode = false) {
 		
-		$total_minutes = $seconds / 60;
-		$total_hours = $total_minutes / 60;
-		$total_days = $total_hours / $this->work_day_length;
-		
-		$days = floor($total_days);
-		$hours = floor($total_hours - (floor($total_days) * $this->work_day_length));
-		$minutes = floor($total_minutes - (floor($total_hours) * 60));
-		
-		//$minutes = date("i", $seconds);
-		//$hours = date("H", $seconds);
-		//$days = date("z", $seconds);
-		
-		$duration = "";
-		if ($days) $duration .= $days . "d ";
-		if ($hours) $duration .= sprintf('%02d', $hours) . "h ";
-		$duration .= sprintf('%02d', $minutes) . "m";
-		
-		return $duration;
+		switch ($mode) {
+
+			case 'hours':
+
+				return round($seconds / (60 * 60), 2);
+
+			case 'days':
+			default:
+
+				$total_minutes = $seconds / 60;
+				$total_hours = $total_minutes / 60;
+				$total_days = $total_hours / $this->work_day_length;
+				
+				$days = floor($total_days);
+				$hours = floor($total_hours - (floor($total_days) * $this->work_day_length));
+				$minutes = floor($total_minutes - (floor($total_hours) * 60));
+				
+				//$minutes = date("i", $seconds);
+				//$hours = date("H", $seconds);
+				//$days = date("z", $seconds);
+				
+				$duration = "";
+				if ($days) $duration .= $days . "d ";
+				if ($hours) $duration .= sprintf('%02d', $hours) . "h ";
+				$duration .= sprintf('%02d', $minutes) . "m";
+				
+				return $duration;
+
+		}
+
+
 		
 	}
 
