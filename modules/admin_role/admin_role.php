@@ -53,7 +53,7 @@ class Site_Admin extends Module {
 	public function sync_capabilities () {
 		
 		global $wp_roles;
-		if ( !isset( $wp_roles ) ) $wp_roles = new WP_Roles();
+		if ( !isset( $wp_roles ) ) $wp_roles = new \WP_Roles();
 		
 		$site_admin = get_role($this->role_name);
 		if (!$site_admin) return;
