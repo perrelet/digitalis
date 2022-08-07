@@ -101,6 +101,8 @@ class OXY_SCSS extends Module {
         $variables = $this->colors($variables);
         $variables = $this->breakpoints($variables);
         $variables = $this->fonts($variables);
+        $variables = $this->sections($variables);
+        $variables = $this->columns($variables);
 		
         $this->variables = $variables;
 
@@ -194,6 +196,42 @@ class OXY_SCSS extends Module {
         return $variables;
 
     }
+	
+	protected function sections ($variables) {
+		
+		if (!is_callable('ct_get_global_settings')) return $variables;
+		
+		$sections = ct_get_global_settings()['sections'];
+		
+		if (isset($sections['container-padding-left']) && $sections['container-padding-left']) {
+			$variables['sec-px'] = $sections['container-padding-left'] . $sections['container-padding-left-unit'];
+		}
+		
+		if (isset($sections['container-padding-top']) && $sections['container-padding-top']) {
+			$variables['sec-py'] = $sections['container-padding-top'] . $sections['container-padding-top-unit'];
+		}
+		
+		return $variables;
+		
+	}
+	
+	protected function columns ($variables) {
+		
+		if (!is_callable('ct_get_global_settings')) return $variables;
+		
+		$columns = ct_get_global_settings()['columns'];
+		
+		if (isset($columns['padding-left']) && $columns['padding-left']) {
+			$variables['col-px'] = $columns['padding-left'] . $columns['padding-left-unit'];
+		}
+		
+		if (isset($columns['padding-top']) && $columns['padding-top']) {
+			$variables['col-py'] = $columns['padding-top'] . $columns['padding-top-unit'];
+		}
+		
+		return $variables;
+		
+	}
 
     protected function slug ($string) {
 
