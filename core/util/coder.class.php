@@ -44,7 +44,7 @@ class Coder extends Utility {
 		if ($js_loader->inline) {
 			
 			if ($js_loader->relative) $path = DIGITALIS_PATH . $path;
-			$handle = ($js_loader->handle ? $js_loader->handle : $path);
+			$handle = ($js_loader->handle ? $js_loader->handle : $js_loader->file);
 			
 			if ($js_loader->instantiate) {
 				
