@@ -190,7 +190,7 @@ class Digitalis {
 		
 	}
 	
-	//HOOKS
+	// HOOKS
 	
 	public function activate () {
 		require (DIGITALIS_PATH . "core/activate.class.php");
@@ -200,6 +200,63 @@ class Digitalis {
 	public function deactivate () {
 		require (DIGITALIS_PATH . "core/deactivate.class.php");
 		new Deactivate();
-	}	
+	}
+
+	// BRANDING
+
+	public function branding ($options = []) {
+
+		$options = wp_parse_args([
+			'message'		=> false,
+			'color'			=> '#ffffff',
+			'hover_color'	=> '#ffffff',
+			'logo'			=> 'digitalis-web-build-co.current',
+			'width'			=> 200,
+			'opacity' 		=> 0.8,
+			'hover_opacity' => 0.9,
+			'transition'	=> 0.1,
+		], $options);
+
+		$ref = get_site_url();
+
+		echo "<a class='digitalis-branding' href='https://digitalis.ca/?ref={$ref}' target='_blank'>";
+			if ($options['message']) echo "<div class='digitalis-branding--message'>{$options['message']}</div>";
+			if ($options['logo']) echo file_get_contents(DIGITALIS_PATH . "assets/logo/{$options['logo']}.svg");
+		echo "</a>";
+
+		echo "<style>";
+
+			echo ".digitalis-branding {";
+				echo "display: block;";
+				echo "width: 80%;";
+				echo "max-width: {$options['width']}px;";
+				echo "transition: {$options['transition']}s !important;";
+				echo "opacity: {$options['opacity']};";
+				echo "color: {$options['color']} !important;";
+			echo "}";
+
+			echo ".digitalis-branding .digitalis-branding--message {";    
+				echo "text-transform: uppercase;";
+				echo "font-size: 12px;";
+				echo "letter-spacing: 1px;";
+				echo "margin-bottom: 2px;";
+				echo "line-height: 1.4;";
+				echo "padding-left: 12%;";
+			echo "}";
+
+			echo ".digitalis-branding svg {";
+				echo "display: block;";
+				echo "width: 100%;";
+				echo "height: auto;";
+			echo "}";
+
+			echo ".digitalis-branding:hover, .digitalis-branding:active {";
+				echo "opacity: {$options['hover_opacity']};";
+				echo "color: {$options['hover_color']} !important;";
+			echo "}";
+
+		echo "</style>";
+
+	}
 
 }
