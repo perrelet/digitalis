@@ -11,10 +11,13 @@
 }
 
 #digitalis_welcome img {
-	width: 100%;
-	max-width: 250px;
-	margin-top: 30px;
-	margin-bottom: 30px;
+	width: 80%;
+    max-width: 250px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #digitalis_welcome h2.welcome-text {
