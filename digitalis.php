@@ -16,7 +16,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 /* DEFINES */
  
-define( 'DIGITALIS_VERSION', 			'2.7.1' );
+define( 'DIGITALIS_VERSION', 			'2.7.2' );
 
 define(	'DIGITALIS_PATH', 				plugin_dir_path( __FILE__ ) );
 define( 'DIGITALIS_URI',				plugin_dir_url( __FILE__ ) );

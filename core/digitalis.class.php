@@ -228,7 +228,7 @@ class Digitalis {
 
 			echo ".digitalis-branding {";
 				echo "display: block;";
-				echo "width: 80%;";
+				echo "width: 100%;";
 				echo "max-width: {$options['width']}px;";
 				echo "transition: {$options['transition']}s !important;";
 				echo "opacity: {$options['opacity']};";
