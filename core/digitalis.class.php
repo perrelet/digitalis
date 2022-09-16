@@ -217,7 +217,7 @@ class Digitalis {
 			'transition'	=> 0.1,
 		]);
 
-		$ref = get_site_url();
+		$ref = urlencode(preg_replace('#^http(s)?://#', '', untrailingslashit(get_site_url())));
 
 		echo "<a class='digitalis-branding' href='https://digitalis.ca/?ref={$ref}' target='_blank'>";
 			if ($options['message']) echo "<div class='digitalis-branding--message'>{$options['message']}</div>";
