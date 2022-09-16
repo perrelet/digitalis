@@ -205,8 +205,8 @@ class Digitalis {
 	// BRANDING
 
 	public function branding ($options = []) {
-
-		$options = wp_parse_args([
+		
+		$options = wp_parse_args($options, [
 			'message'		=> false,
 			'color'			=> '#ffffff',
 			'hover_color'	=> '#ffffff',
@@ -215,7 +215,7 @@ class Digitalis {
 			'opacity' 		=> 0.8,
 			'hover_opacity' => 0.9,
 			'transition'	=> 0.1,
-		], $options);
+		]);
 
 		$ref = get_site_url();
 
