@@ -259,4 +259,30 @@ class Digitalis {
 
 	}
 
+	// COPYRIGHT
+
+	public function copyright ($year = false, $owner = false, $terms = "All rights reserved") {
+
+		if ($owner) echo "{$owner} ";
+		echo "&copy; ";
+
+		if (intval($year) == date('Y')) {
+			
+			echo intval($year);
+		
+		} else if (intval($year) < date('Y')) {
+			
+			echo intval($year) . ' - ' . date('Y');
+		
+		} else {
+			
+			echo date('Y');
+		
+		}
+
+		if ($terms) echo " {$terms}";
+		echo ".";
+
+	}
+
 }
