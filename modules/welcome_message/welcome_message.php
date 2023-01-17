@@ -15,7 +15,7 @@ class Welcome_Message {
 	function add_options ($manager) {
 		$manager->add_field(new Field("Welcome Text - Line 1", "welcome_text_1", "text", "Welcome, " . get_bloginfo('name')));
 		$manager->add_field(new Field("Welcome Text - Line 2", "welcome_text_2", "text", "You're Amazing."));
-		$manager->add_field(new Field("Welcome Icon", "welcome_icon", "text", DIGITALIS_URI . "assets/svg/digitalis.lockup.01.white.svg"));
+		$manager->add_field(new Field("Welcome Icon", "welcome_icon", "text", DIGITALIS_URI . "assets/logo/digitalis.lockup.01.white.svg"));
 	}
 	
 	function widget () {
