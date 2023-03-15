@@ -57,14 +57,20 @@ $Digitalis->run();
 
 //
 
-function dprint ($content, $pre = true) {
-	Digitalis\Util\Debugger::printer($content, $pre);
+if (!function_exists('dprint')) {
+	function dprint ($content, $pre = true) {
+		Digitalis\Util\Debugger::printer($content, $pre);
+	}
 }
 
-function jprint ($content, $label = false) {
-	Digitalis\Util\Debugger::console($content, $label);
+if (!function_exists('jprint')) {
+	function jprint ($content, $label = false) {
+		Digitalis\Util\Debugger::console($content, $label);
+	}
 }
 
-function dlog ($content, $label = false) {
-	Digitalis\Util\Debugger::logger($content, $label);
+if (!function_exists('dlog')) {
+	function dlog ($content, $label = false) {
+		Digitalis\Util\Debugger::logger($content, $label);
+	}
 }
