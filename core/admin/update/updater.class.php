@@ -172,8 +172,8 @@ return $res;
 			$res->slug = DIGITALIS_PLUGIN_SLUG;
 			$res->plugin = DIGITALIS_PLUGIN_BASE;
 			$res->new_version = $update->version;
-			$res->tested = $update->tested;
-			$res->package = $update->download_url;
+			if (property_exists($update, 'tested')) $res->tested = $update->tested;
+			if (property_exists($update, 'download_url')) $res->package = $update->download_url;
 			
 			$transient->response[$res->plugin] = $res;
 			//$transient->checked[$res->plugin] = $update->version;
