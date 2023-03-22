@@ -6,7 +6,8 @@ use stdClass;
 
 class Updater {
 	
-	private $api = 'https://digitaliswebdesign.com/update/digitalis.json';
+	//private $api = 'https://digitaliswebdesign.com/update/digitalis.json';
+	private $api = 'https://digitalis.ca/plugins/update/digitalis/info';
 	private $transient_name = 'digitalis_upgrade';
 	
 	function __construct() {
@@ -114,14 +115,26 @@ return $res;
 	
 	public function is_new_version ($json) {
 		
-		if (!$json) return false;
-		if (!property_exists($json, "version")) return false;
-		if (!property_exists($json, "requires")) return false;
+		if (!$json || !property_exists($json, "version")) return false;
 		
-		if (version_compare( DIGITALIS_VERSION, $json->version, '<' ) && version_compare($json->requires, get_bloginfo('version'), '<' )) {
+		if (version_compare(DIGITALIS_VERSION, $json->version, '<')) {
+
+			if (property_exists($json, "requires") && !version_compare($json->requires, get_bloginfo('version'), '<' )) {
+
+				return false;
+
+			} else {
+
+				return true;
+
+			}
+
 			return true;
+
 		} else {
+
 			return false;
+
 		}
 		
 	}
