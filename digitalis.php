@@ -12,7 +12,7 @@
 
 if ( ! defined( 'WPINC' ) ) {
 	die;
-}
+} 
 
 /* DEFINES */
  
