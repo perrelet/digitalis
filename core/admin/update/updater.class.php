@@ -174,6 +174,7 @@ return $res;
 			$res->new_version = $update->version;
 			if (property_exists($update, 'tested')) $res->tested = $update->tested;
 			if (property_exists($update, 'download_url')) $res->package = $update->download_url;
+			if (property_exists($update, 'download_link')) $res->package = $update->download_link;
 			
 			$transient->response[$res->plugin] = $res;
 			//$transient->checked[$res->plugin] = $update->version;
