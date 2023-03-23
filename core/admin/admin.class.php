@@ -69,11 +69,11 @@ class Admin {
 		
 		echo "<h1>Updates</h1>";
 		
-		/* $this->updater->delete_transient();
+		$this->updater->delete_transient();
 
-		dprint($this->updater->request()); */
+		dprint($this->updater->request());
 
-		$update = $this->updater->check_for_updates(false);
+		/* $update = $this->updater->check_for_updates(false);
 		if ($update) {
 			
 			echo "<h3>A new version of digitalis is available!</h3>";
@@ -89,7 +89,7 @@ class Admin {
 			
 			echo "<div>You're all up to date Sunny Jim!</div>";
 			
-		}
+		} */
 		
 	}
 
