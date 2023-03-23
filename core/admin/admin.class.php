@@ -69,7 +69,11 @@ class Admin {
 		
 		echo "<h1>Updates</h1>";
 		
-		$update = $this->updater->check_for_updates(false);
+		$this->updater->delete_transient();
+
+		dprint($this->updater->request());
+
+		/* $update = $this->updater->check_for_updates(false);
 		if ($update) {
 			
 			echo "<h3>A new version of digitalis is available!</h3>";
@@ -85,36 +89,7 @@ class Admin {
 			
 			echo "<div>You're all up to date Sunny Jim!</div>";
 			
-		}
-		/* $remote = wp_remote_get( 'http://digitaliswebdesign.com/update/digitalis.json', array(
-			'timeout' => 10,
-			'headers' => array(
-			'Accept' => 'application/json'
-			))
-		);
-		
-		if (is_wp_error( $remote )) {
-			
-			return false;
-			
-		} else {
-			if (isset( $remote['response']['code'] ) && $remote['response']['code'] == 200 && !empty( $remote['body'] ) ) {
-				
-				$remote = json_decode( $remote['body'] );
-				
-				print_r($remote);
-				
-				//echo basename(__FILE__);
-				
-				//set_transient( 'digitalis_upgrade', $remote, 43200 ); // 12 hours cache
-			} else {
-				
-				return false;
-				
-			}
-		}
-		
-		return "xxx"; */
+		} */
 		
 	}
 
