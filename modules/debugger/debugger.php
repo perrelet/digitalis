@@ -34,8 +34,10 @@ class Debugger extends Module {
 	
 	public function add_cookie () {
 		
-		if(current_user_can('administrator')) {
+		if ($this->get_option('debugger_show_admin') && current_user_can('administrator')) {
+
 			setcookie( 'wp_debug', $this->get_option("debugger_show_admin"), time() + 86400, '/');
+
 		}
 
 	}
