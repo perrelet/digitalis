@@ -12,11 +12,9 @@ class ACF_Names {
 	
 	public function prepare_field( $field ) {
 		
-		if (current_user_can('administrator')) {
+		if (current_user_can(DIGITALIS_ADMIN_CAP)) {
 			
-			$wrap = ["<span style='font-size: 1em; opacity: 0.6; margin-left: 12px;' class='digit-acf-name'>", "</span>"];
-			
-			$html = $wrap[0] . " " . $field["_name"] . $wrap[1];
+			$wrap = ["<span class='digit-acf-name'>", "</span>"];
 
 			if (array_key_exists("wpml_cf_preferences", $field)) {
 				
@@ -27,8 +25,12 @@ class ACF_Names {
 					WPML_TRANSLATE_CUSTOM_FIELD => __("Translate", "acfml")
 				);
 				
-				$html .= $wrap[0] . " " . $wpml_choices[$field['wpml_cf_preferences']] . $wrap[1];
+				$html .= $wrap[0] . " - " . $wpml_choices[$field['wpml_cf_preferences']] . $wrap[1];
 				
+			} else {
+
+				$html = $wrap[0] . " - " . $field["_name"] . $wrap[1];
+
 			}
 			
 			$field['label'] .= $html;
