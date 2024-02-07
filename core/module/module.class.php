@@ -44,9 +44,9 @@ class Module {
 		return $pos;
 	}
 
-	public function get_option( string $option, $default = false ) {
+	public function get_option (string $option, $default = false) {
 		
-		return get_option($this->get_option_key($option), $default);
+		return apply_filters("Digitalis/Module/Option={$option}", get_option($this->get_option_key($option), $default), $this);
 		
 	}
 	
