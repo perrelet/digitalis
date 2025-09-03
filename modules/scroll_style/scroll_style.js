@@ -1,50 +1,67 @@
-(function(params){
+(function (params) {
+    // params: { offset: number | (() => number), hysteresis?: number }
+    let atTop = true;
+    let lastY = window.pageYOffset || document.documentElement.scrollTop;
+    let lastDelta = 0;
+    let ticking = false;
 
-	/* document.addEventListener("DOMContentLoaded", function() { */
-		
-		var at_top = true;
-		var scroll_y_prev = window.pageYOffset || document.documentElement.scrollTop;
-		var delta_prev = 0;
-		
-		var scroll_style = throttle(function() {
-			
-			var scroll_y = window.pageYOffset || document.documentElement.scrollTop;
-			var delta = scroll_y_prev - scroll_y;
-			
-			if ((scroll_y <= params['offset']) != at_top) {
-				
-				at_top = (scroll_y <= params['offset']);
-				
-				if (at_top) {
-					document.body.classList.remove("scrolled");
-				} else {
-					document.body.classList.add("scrolled");
-				}
-				
-			}
-			
-			if (scroll_y > 0 && Math.abs(delta) > 0) { // Required for mobile browsers that 'bounce' scroll at top (safari)
-				
-				if (Math.sign(delta) != Math.sign(delta_prev)) {
-					
-					if (delta > 0) {
-						document.body.classList.add("scroll-up");
-						document.body.classList.remove("scroll-down");
-					} else {
-						document.body.classList.add("scroll-down");
-						document.body.classList.remove("scroll-up");
-					}
-				}
-				
-				scroll_y_prev = scroll_y;
-				delta_prev = delta;
-			
-			}
-			
-		}, 200);
-		
-		window.addEventListener('scroll', scroll_style);
-		
-	/* }); */
-	
+    const H = Number(Math.max(0, params.hysteresis ?? 0)); // px buffer to prevent thrash
+    const getOffset = typeof params.offset === 'function'
+        ? params.offset
+        : () => params.offset || 0;
+
+    function applyState(y) {
+
+        const delta = lastY - y;
+        const offset = Number(getOffset());
+
+        if (atTop) {
+            if (y > offset + H) {
+                atTop = false;
+                document.body.classList.add('scrolled');
+            }
+        } else {
+            if (y <= offset - H) {
+                atTop = true;
+                document.body.classList.remove('scrolled');
+            }
+        }
+
+        if (y > 0 && Math.abs(delta) > 0) {
+            if (Math.sign(delta) !== Math.sign(lastDelta)) {
+                if (delta > 0) {
+                    document.body.classList.add('scroll-up');
+                    document.body.classList.remove('scroll-down');
+                } else {
+                    document.body.classList.add('scroll-down');
+                    document.body.classList.remove('scroll-up');
+                }
+            }
+            lastDelta = delta;
+        }
+
+        lastY = y;
+
+    }
+
+    function onScroll() {
+        if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(() => {
+                ticking = false;
+                const y = window.pageYOffset || document.documentElement.scrollTop;
+                applyState(y);
+            });
+        }
+    }
+
+    requestAnimationFrame(() => {
+        const y = window.pageYOffset || document.documentElement.scrollTop;
+        lastDelta = 0;
+        applyState(y);
+    });
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+
 })(scroll_style_params);

@@ -17,22 +17,22 @@ class Scroll_Style extends Module {
 	
 	function add_options ($manager) {
 		
-		$manager->add_field(new Field("Offset (px)", "scroll_style_offset", "text", "1"));
+		$manager->add_field(new Field("Offset (px)",     "scroll_style_offset",     "text", "1"));
+		$manager->add_field(new Field("Hysteresis (px)", "scroll_style_hysteresis", "text", "0"));
 		
 	}
 	
 	public function scripts () {
 
 		$asset_manager = $this->digitalis()->get_asset_manager();
-		
-		$asset_manager->load_js(new JS_Loader("assets/js/", "throttle.min.js"));
-		
+
 		$loader = new JS_Loader("modules/scroll_style/", "scroll_style.min.js");
-		//$loader = new JS_Loader("modules/scroll_style/", "scroll_style.js");
 		$loader->params_name = "scroll_style_params";
 		$loader->params = [
-			"offset"		=>	get_option(DIGITALIS_OPTION . 'scroll_style_offset')
+			"offset"     =>	get_option(DIGITALIS_OPTION . 'scroll_style_offset'),
+			"hysteresis" =>	get_option(DIGITALIS_OPTION . 'scroll_style_hysteresis'),
 		];
+
 		$asset_manager->load_js($loader);
 	
 	}
