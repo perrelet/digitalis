@@ -4,7 +4,7 @@
  * Plugin Name:       Digitalis Web Design
  * Plugin URI:        http://www.digitaliswebdesign.com/
  * Description:       “Foxglove, Foxglove, What do you see?” The cool green woodland, The fat velvet bee; Hey, Mr Bumble, I’ve honey here for thee!
- * Version:           2.9.3
+ * Version:           2.9.4
  * Author:            Digitalis Web Design
  * Author URI:        http://www.digitaliswebdesign.com/
  * Text Domain:       digitalis
