@@ -29,7 +29,10 @@ class Page_Loader extends Module {
     
     public function init () {
         
-        if ($this->get_option('loader_do_screen'))  add_action('ct_before_builder', [$this, 'inject_screen'], 100);
+        if ($this->get_option('loader_do_screen')) {
+            add_action('wp_body_open',      [$this, 'inject_screen'], 100);
+            add_action('ct_before_builder', [$this, 'inject_screen'], 100);
+        }
         if ($this->get_option('loader_do_spinner')) add_action('Digitalis/Module/Page_Loader/Content', [$this, 'spinner'], 100);
         
         
@@ -67,6 +70,10 @@ class Page_Loader extends Module {
     }
         
     public function inject_screen () {
+
+        static $injected = false; // Oxygen fires both hooks.
+        if ($injected) return;
+        $injected = true;
 
         $params = $this->get_params();
 
